@@ -79,7 +79,7 @@ class RentalApp extends StatelessWidget {
     );
   }
 
-  // Popular Locations Carousel
+  
   Widget _buildLocationCarousel() {
     final List<Map<String, String>> locationImages = [
       {
@@ -138,7 +138,7 @@ class RentalApp extends StatelessWidget {
     );
   }
 
-  // Recommended Carousel
+ 
   Widget _buildRecommendedCarousel() {
     final List<Map<String, dynamic>> homeImages = [
       {
@@ -241,7 +241,7 @@ class RentalApp extends StatelessWidget {
     );
   }
 
-  // Hosting Fee Section
+
   Widget _buildHostingFeeSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
