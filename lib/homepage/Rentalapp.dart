@@ -37,13 +37,10 @@ class RentalApp extends StatelessWidget {
         children: [
           SizedBox(height: screenHeight * 0.04),
           Text(
-            "Explore the world ! By",
+          "Explore the world!\nBy Travelling",//using \n next line property
             style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
           ),
-          Text(
-            "Travelling",
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
-          ),
+          
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
