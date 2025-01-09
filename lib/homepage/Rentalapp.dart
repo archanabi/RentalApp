@@ -27,51 +27,56 @@ class RentalApp extends StatelessWidget {
   // Header Section (Title + Search Bar)
   Widget _buildHeading(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      padding: EdgeInsets.all(16.0),
-      color: const Color.fromARGB(255, 235, 229, 245),
-      height: screenHeight * 0.25,
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: screenHeight * 0.04),
-          Text(
-          "Explore the world!\nBy Travelling",//using \n next line property
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
-          ),
-          
-          Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Flexible(
-                child: Container(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: EdgeInsets.all(16.0),
+        color: const Color.fromARGB(255, 235, 229, 245),
+        height: screenHeight * 0.25,
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: screenHeight * 0.04),
+            Text(
+            "Explore the world! By\n Travelling",//using \n next line property
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
+            ),
+            
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Flexible(
+                  child: Container(
+                   
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                     borderRadius: BorderRadius.all(Radius.circular(16.0))
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        
+                        contentPadding: EdgeInsets.all(16.0),
+                        hintText: "Where did you go?",
+                        prefixIcon: Icon(Icons.search),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ),
+              SizedBox(width: 8.0,),
+                Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5.0),
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(8.0),
-                      hintText: "Where did you go?",
-                      prefixIcon: Icon(Icons.search),
-                      border: InputBorder.none,
-                    ),
-                  ),
+                  child: Icon(Icons.short_text_rounded),
                 ),
-              ),
-              Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: Icon(Icons.short_text_rounded),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -79,18 +84,26 @@ class RentalApp extends StatelessWidget {
   
   Widget _buildLocationCarousel() {
     final List<Map<String, String>> locationImages = [
-      {
-        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfWcUoIY2YXxSDUN4eQonQeh2zdioR2YYpag&s',
+       {
+        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzYe53ZlLAei5IzHSLATHYSy7HKn1KbwYeBw&s',
+        'text': "Moscow",
+      },
+       {
+        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFyO3a2am4pxrQolpp04m-rdkJVuEiFNVzBA&s',
         'text': "India",
       },
-      {
-        'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/The_Great_Wall_of_China_-_Badaling.jpg/800px-The_Great_Wall_of_China_-_Badaling.jpg',
-        'text': "US",
-      },
-      {
-        'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/The_Great_Wall_of_China_-_Badaling.jpg/800px-The_Great_Wall_of_China_-_Badaling.jpg',
+        {
+        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzYe53ZlLAei5IzHSLATHYSy7HKn1KbwYeBw&s',
         'text': "Moscow",
-      }
+      },
+        {
+        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZWvE1yI-9vv_mYo_9r0xEkOGX4wo1_mDP0SVLCDdK2Gkzwjb5yU7vYPUrM5k3YbQzuTM&usqp=CAU',
+        'text': "USA",
+      },
+     
+      
+      
+    
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,9 +113,16 @@ class RentalApp extends StatelessWidget {
           child: Text("Popular Location", style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0)),
         ),
         CarouselSlider(
+          
           options: CarouselOptions(
-            viewportFraction: 0.25,
-            initialPage: 2,
+            
+            height: 170.0,
+            aspectRatio: 2.0,
+           pageSnapping: true,
+        
+        padEnds: false,
+            viewportFraction: 0.30,
+            initialPage: 1,
             enableInfiniteScroll: true,
             scrollDirection: Axis.horizontal,
           ),
@@ -112,19 +132,20 @@ class RentalApp extends StatelessWidget {
               child: Stack(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(16.0),
                     child: Image.network(
+                      width: double.infinity,
                       location['image']!,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Positioned(
-                    child: Center(
-                      child: Text(
-                        location['text']!,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                 top: 100,
+                 left: 30,
+                  child: Text(
+                    location['text']!,
+                    style: TextStyle(color: Colors.white),
+                  ),
                   ),
                 ],
               ),
@@ -140,20 +161,20 @@ class RentalApp extends StatelessWidget {
     final List<Map<String, dynamic>> homeImages = [
       {
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0xRABvwE4RNirv3TLP8f5rINf592QixG-5Q&s',
-        'rate': 90,
-        'text': 'Carinthia',
-        'avail': 'Private room/1 bed',
+        'rate': 450,
+        'text': 'Carinthia Lake see'' ',
+        'avail': 'Private room/4 bed',
       },
       {
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZiny-FfKHLTxKc4XJ8UiYP8_VKWIIyu4dw&s',
-        'rate': 450,
-        'text': 'Carinthia',
-        'avail': 'Single room/1 bed',
+        'rate': 120,
+        'text': 'Carinthia Lake see'' ',
+        'avail': 'private room/1 bed',
       },
       {
         'image': 'https://thumbs.dreamstime.com/b/new-home-sale-2364016.jpg',
-        'rate': 890,
-        'text': 'Carinthia',
+        'rate': 400,
+        'text': 'Carinthia Lake see'' ',
         'avail': 'Private room/4 bed',
       },
     ];
@@ -167,7 +188,9 @@ class RentalApp extends StatelessWidget {
         ),
         CarouselSlider(
           options: CarouselOptions(
-            viewportFraction: 0.4,
+         height: 285,
+            padEnds: false,
+            viewportFraction: 0.60,
             initialPage: 1,
             enableInfiniteScroll: true,
             scrollDirection: Axis.horizontal,
@@ -179,7 +202,7 @@ class RentalApp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(5.0),
+                    borderRadius: BorderRadius.circular(16.0),
                     child: Stack(
                       children: [
                         Image.network(
@@ -208,7 +231,7 @@ class RentalApp extends StatelessWidget {
                       ),
                       Text(
                         "/Night",
-                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 10.0),
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.0),
                       ),
                       Icon(Icons.bolt, color: Colors.yellow, size: 12.0),
                       Spacer(),
@@ -246,17 +269,19 @@ class RentalApp extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            borderRadius: BorderRadius.all(Radius.circular(20.0)),
             child: Stack(
               children: [
                 Image.network(
+               
+                  width: double.infinity,
                   'https://media.istockphoto.com/id/1069585056/photo/stylish-young-woman-drinking-coffee-at-the-cafe-looking-away.jpg?s=612x612&w=0&k=20&c=IW5mOkpx55CpqFO4SK3XWCrfYNAYkwqjTmS0B4KTELc=',
                   fit: BoxFit.cover,
                 
                 ),
                 Positioned(
                   top: 20.0,
-                  left: 5.0,
+                  left: 20.0,
                   child: Column(
                     children: [
                       Text("Hosting Fee For", style: TextStyle(color: Colors.white, fontSize: 20.0)),
@@ -285,25 +310,25 @@ class RentalApp extends StatelessWidget {
   Widget _buildMostViewedProperties() {
     final List<Map<String, String>> mostViewedProperties = [
       {
-        'image': 'https://thumbs.dreamstime.com/b/house-exterior-8717154.jpg',
-        'rate': '\$720',
-        'text': "Carinthia Lake See breakfast",
+        'image': 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg',
+        'rate': '\$90',
+        'text': "Carinthia Lake See Breakfast lorem",
         'avail': "Private room/4beds",
         'rating': '5',
       },
       {
         'image': 'https://thumbs.dreamstime.com/b/brick-home-small-front-balcony-12797979.jpg',
-        'rate': '\$920',
-        'text': "Carinthia Lake See breakfast",
-        'avail': "Private room/4beds",
-        'rating': '4.8',
-      },
-      {
-        'image': 'https://thumbs.dreamstime.com/b/new-home-sale-2364016.jpg',
-        'rate': '\$320',
-        'text': "Carinthia Lake See breakfast",
+        'rate': '\$300',
+        'text': "Carinthia Lake See Breakfast lorem",
         'avail': "Private room/4beds",
         'rating': '5',
+      },
+      {
+        'image': 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?cs=srgb&dl=pexels-binyaminmellish-1396122.jpg&fm=jpg',
+        'rate': '\$240',
+        'text': "Carinthia Lake See Breakfast lorem",
+        'avail': "Private room/4beds",
+        'rating': '4',
       },
     ];
 
@@ -338,12 +363,13 @@ class RentalApp extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.circular(20.0),
             child: Stack(
               children: [
                 Image.network(
                   image,
-               
+               height: 200,
+               width: double.infinity,
                   fit: BoxFit.cover,
                 ),
                 Positioned(
@@ -357,6 +383,7 @@ class RentalApp extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 10.0,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -365,15 +392,16 @@ class RentalApp extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(rate, style: TextStyle(fontWeight: FontWeight.w600)),
+                      Text(rate, style: TextStyle(fontWeight: FontWeight.w900,fontSize: 20.0)),
                       Row(
                         children: [
-                          Text("/Night"),
-                          Icon(Icons.bolt, color: Colors.yellow, size: 12.0),
+                          Text("/Night",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 10.0),),
+                          Icon(Icons.bolt, color: const Color.fromARGB(255, 241, 141, 78), size: 12.0),
                         ],
                       ),
                     ],
                   ),
+                  SizedBox(height: 7.0,),
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.red, size: 10.0),
@@ -382,6 +410,7 @@ class RentalApp extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 5.0,),
               Text(text, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w900)),
               Text(avail, style: TextStyle(fontSize: 12.0, color: Colors.grey)),
             ],
