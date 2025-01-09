@@ -1,16 +1,17 @@
-# flutter_application_radical
+# RentalApp -Flutter UI/UX
+RentalApp is a Flutter-based mobile application showcasing a  and visually appealing UI for exploring rental properties.
+## Features
+Carousel Sliders:
+Multiple carousel sliders are used to display locations and recommended properties.
+Dynamic content loaded through lists and maps.
+# property details
+Display property details like rate per night, available rooms, ratings, and additional info.
+Modern UI with rounded corners, cards, and interactive elements.
+# Responsiveness
+Adaptive UI design for different mobile screen sizes 
+# challenge overcome
+Responsive Layout: I used MediaQuery to make the layout responsive across different screen sizes.For example, I adjusted the header section's height based on the screen height.
 
-A new Flutter project.
+Dynamic Property Displays: To manage and display multiple properties dynamically, I used ListView.builder(to scroll vertically) and CarouselSlider(to scroll horizontally) to create interactive and flexible carousels for location and recommended properties.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
